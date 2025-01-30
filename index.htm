@@ -163,64 +163,58 @@
 
         
         /* Carousel Styles */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    background-color: #f9f9f9;
-    padding: 60px 0;
-}
-
-.carousel-slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slides .slide {
-    min-width: 100%;
-    position: relative;
-}
-
-.carousel-slides .slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.carousel-slides .slide-text {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.carousel-prev, .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-prev {
-    left: 20px;
-}
-
-.carousel-next {
-    right: 20px;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .carousel-container {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #717171;
+        }
 
         /* Hero Section */
         .hero {
@@ -387,8 +381,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   color: #4d4d4d;
   background-color: #fff;
@@ -400,8 +394,8 @@ ul {
 .example-2 .icon-content a svg {
   position: relative;
   z-index: 1;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 .example-2 .icon-content a:hover {
   color: white;
@@ -447,6 +441,7 @@ ul {
 }
 
     </style>
+
 </head>
 <body>
     <!-- Header Section -->
@@ -489,77 +484,52 @@ ul {
 
   
      <!-- Carousel Section -->
-    <script>
-        // Carousel Functionality
-let currentSlide = 0;
-
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-slides .slide');
-    if (index >= slides.length) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = slides.length - 1;
-    } else {
-        currentSlide = index;
-    }
-    const offset = -currentSlide * 100;
-    document.querySelector('.carousel-slides').style.transform = `translateX(${offset}%)`;
-}
-
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
-
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
-
-// Auto-play the carousel (optional)
-setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    </script>
-<section class="carousel">
-    <div class="container">
-        <div class="carousel-slides">
-            <div class="slide active">
-                <img src="cctv installation.jpg" alt="Slide 1">
-                <div class="slide-text">
-                    <h3>Advanced Home Security</h3>
-                    <p>Protect your home with our cutting-edge technology.</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="cctv monitoring.jpg" alt="Slide 2">
-                <div class="slide-text">
-                    <h3>Business Security Solutions</h3>
-                    <p>Customized security for businesses of all sizes.</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="lay guard ai.jpg" alt="Slide 3">
-                <div class="slide-text">
-                    <h3>24/7 Surveillance</h3>
-                    <p>Stay safe with our round-the-clock monitoring.</p>
-                </div>
-                <div class="slide">
-                <img src="manned security.jpg" alt="Slide 4">
-                <div class="slide-text">
-                    <h3>Manned Guard</h3>
-                    <p>Stay safe with our round-the-clock monitoring.</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="special security.jpg" alt="Slide 5">
-                <div class="slide-text">
-                    <h3>Special Security</h3>
-                    <p>Stay safe with our round-the-clock monitoring.</p>
-                </div>
-            </div>
-            </div>
+     <div class="carousel-container">
+        <div class="carousel">
+            <img src="security.jpg" alt="Image 1">
+            <img src="special security.jpg" alt="Image 2">
+            <img src="security - Copy.jpg" alt="Image 3">
         </div>
-        <button class="carousel-prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-next" onclick="nextSlide()">&#10095;</button>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
     </div>
-</section>
+    
+    <div class="dots">
+        <span class="dot" onclick="moveToSlide(0)"></span>
+        <span class="dot" onclick="moveToSlide(1)"></span>
+        <span class="dot" onclick="moveToSlide(2)"></span>
+    </div>
+    
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const totalSlides = slides.length;
+        const dots = document.querySelectorAll('.dot');
+    
+        function updateCarousel() {
+            document.querySelector('.carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+    
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+    
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+    
+        function moveToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+    
+        updateCarousel();
+        setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
+    </script>
 
     <!-- Services Section -->
     <section id="services" class="services">
