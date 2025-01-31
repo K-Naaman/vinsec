@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,20 +34,21 @@
         .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
+            background-color: #F5F5F5;
+            color: #707070;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #707070;
+            color: #fff;
         }
 
         /* Header Styles */
         header {
-            background-color: #007BFF; /* Blue color */
-            color: #fff;
+            background-color: #F5F5F5; /* Blue color */
+            color: #0a0909;
             padding: 20px 0;
         }
 
@@ -81,7 +83,7 @@
         }
 
         header nav ul li a {
-            color: #fff;
+            color: #000000;
             font-weight: bold;
         }
 
@@ -90,7 +92,7 @@
             display: none; /* Hide by default */
             cursor: pointer;
             font-size: 24px;
-            color: #fff;
+            color: #000;
         }
 
         /* Responsive Navigation */
@@ -98,7 +100,7 @@
             header nav ul {
                 display: none;
                 flex-direction: column;
-                background-color: #007BFF;
+                background-color: #F5F5F5;
                 position: absolute;
                 top: 70px;
                 right: 0;
@@ -144,7 +146,7 @@
 }
 
 .custom-shape-divider-top-1737985929 .shape-fill {
-    fill: #007BFF; /* Change this to match your design */
+    fill: #F5F5F5; /* Change this to match your design */
 }
 
 /* Example Section Styling */
@@ -155,8 +157,8 @@
 }
 
 .section-2 {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #F5F5F5;
+    color: #000;
     padding: 60px 20px;
     text-align: center;
 }
@@ -219,8 +221,8 @@
         /* Hero Section */
         .hero {
             background: url('security-bg.jpg') no-repeat center center/cover;
-            background-color: #007BFF; /* Fallback color */
-            color: #fff;
+            background-color: #F5F5F5; /* Fallback color */
+            color: #000;
             padding: 100px 0;
             text-align: center;
         }
@@ -315,8 +317,8 @@
         .contact button {
             width: 100%;
             padding: 15px;
-            background-color: #007BFF;
-            color: #fff;
+            background-color: #F5F5F5;
+            color: #707070;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -325,7 +327,8 @@
         }
 
         .contact button:hover {
-            background-color: #0056b3;
+            background-color: #606060;
+            color: #fff;
         }
 
         /* Footer Styles */
@@ -334,7 +337,7 @@
             color: #fff;
             text-align: center;
             padding: 40px 0;
-            border-top: 2px solid #007BFF;
+            border-top: 2px solid #F5F5F5;
         }
 
         footer p {
@@ -468,11 +471,50 @@ ul {
     <section id="home" class="hero">
         <div class="container">
             <h2>Your Safety, Our Priority</h2>
-            <p>Providing top-notch security solutions for homes and businesses.</p>
-            <a href="#services" class="btn">Learn More</a>
-            
+            <div class="hero-content">                
+                <img src="security-removebg-preview.png" alt="Security Image">
+                <div class="hero-text">
+                    
+                    <p>Providing top-notch security solutions for homes and businesses.</p>
+                    <a href="#services" class="btn">Learn More</a>
+                </div>
+            </div>
         </div>
-        </section>
+    </section>
+    
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: left;
+            width: 100%;
+        }
+        .hero-content img {
+            max-width: 50%;
+            height: auto;
+        }
+        .hero-text {
+            max-width: 50%;
+        }
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content img, .hero-text {
+                max-width: 90%;
+            }
+        }
+    </style>
+    
  
 <!-- Wave Divider -->
 <div class="custom-shape-divider-top-1737985929">
@@ -489,6 +531,7 @@ ul {
             <img src="security.jpg" alt="Image 1">
             <img src="special security.jpg" alt="Image 2">
             <img src="security - Copy.jpg" alt="Image 3">
+            <img src="images_uniview-better-security.webp" alt="Image 3">
         </div>
         <button class="prev" onclick="prevSlide()">&#10094;</button>
         <button class="next" onclick="nextSlide()">&#10095;</button>
@@ -538,19 +581,53 @@ ul {
             <div class="service-list">
                 <div class="service-item">
                     <h3>Home Security</h3>
+                    <img src="security-removebg-preview.png" alt="Image 1">
                     <p>24/7 monitoring and advanced alarm systems to protect your home.</p>
                 </div>
                 <div class="service-item">
-                    <h3>Business Security</h3>
-                    <p>Customized security solutions for businesses of all sizes.</p>
+                    <h3>VIP Security</h3>
+                    <img src="special_security-removebg-preview.png" alt="Image 2">
+                    <p>Customized security solutions for businesses VIP,wedding and private party.</p>
                 </div>
                 <div class="service-item">
                     <h3>Surveillance Systems</h3>
+                    <img src="images_uniview-better-security.webp" alt="Image 3">
                     <p>State-of-the-art CCTV and surveillance technology.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Lady Guards</h3>
+                    <img src="lady_guard-removebg-preview.png" alt="Image 4">
+                    <p>We also offer lady guards.</p>
                 </div>
             </div>
         </div>
     </section>
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .service-item img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .service-item img {
+                width: 80%;
+                max-width: 200px;
+            }
+        }
+    </style>
+    
 
     <!-- About Us Section -->
     <section id="about" class="about">
@@ -589,7 +666,7 @@ ul {
     <a
       data-social="whatsapp"
       aria-label="Whatsapp"
-      href="https://api.whatsapp.com/send?phone=+112067101079&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
+      href="https://api.whatsapp.com/send?phone=+254713900367&amp;text=Save%20this%20to%20your%20Favorites%20-%20@wilsondesouza"
     >
       <div class="filled"></div>
       <svg
