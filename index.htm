@@ -177,7 +177,7 @@
             overflow: hidden;
             position: relative;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0px 4px 10px transparent;
         }
         .carousel {
             display: flex;
@@ -191,7 +191,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
+            background: transparent;
             color: white;
             border: none;
             padding: 10px;
@@ -215,7 +215,7 @@
             cursor: pointer;
         }
         .active {
-            background-color: #717171;
+            background-color: transparent;
         }
 
         /* Hero Section */
@@ -471,12 +471,153 @@
     <section id="home" class="hero">
         <div class="container">
             <h2>Your Safety, Our Priority</h2>
-            <div class="hero-content">                
-                <img src="security-removebg-preview.png" alt="Security Image">
-                <div class="hero-text">                    
-                    <p>Providing top-notch security solutions for homes and businesses.</p>
-                    <a href="#services" class="btn">Learn More</a>
+            
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body {
+                    font-family: Arial, sans-serif;
+                }
+                .carousel-container {
+                    width: 80%;
+                    max-width: 800px;
+                    margin: auto;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .carousel-slide {
+                    display: none;
+                    align-items: center;
+                    width: 100%;
+                    transition: opacity 1s ease-in-out;
+                }
+                .carousel-slide.active {
+                    display: flex;
+                }
+                .carousel-slide img {
+                    width: 50%;
+                    border-radius: 10px;
+                }
+                .text-box {
+                    width: 50%;
+                    padding: 20px;
+                }
+                .text-box h3 {
+                    margin-bottom: 10px;
+                }
+                .carousel-controls {
+                    text-align: center;
+                    margin-top: 10px;
+                }
+                .dot {
+                    height: 12px;
+                    width: 12px;
+                    margin: 5px;
+                    background-color: #bbb;
+                    border-radius: 50%;
+                    display: inline-block;
+                    cursor: pointer;
+                }
+                .dot.active {
+                    background-color: #717171;
+                }
+                .prev, .next {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: transparent;
+                    color: white;
+                    border: none;
+                    padding: 10px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    border-radius: 50%;
+                }
+                .prev { left: 10px; }
+                .next { right: 10px; }
+        
+                @media (max-width: 768px) {
+                    .carousel-slide {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .carousel-slide img, .text-box {
+                        width: 100%;
+                    }
+                }
+            </style>
+            
+            <div class="hero-content"> 
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="lady_guard-removebg-preview.png" alt="Security Service">
+                        <div class="text-box">
+                            <h3>Lady Guard</h3>
+                            <p>We offer well trained lady guard security.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="VIP_SECURITY_UNIT.png" alt="VIP Security">
+                        <div class="text-box">
+                            <h3>VIP Security</h3>
+                            <p>Customized security solutions for VIPs, weddings, and private events.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images_uniview-better-security.webp" alt="Surveillance Systems">
+                        <div class="text-box">
+                            <h3>CCTV installation</h3>
+                            <p>State-of-the-art CCTV and surveillance technology.</p>
+                        </div>
+                    </div>
+                    
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
                 </div>
+            
+                <div class="carousel-controls">
+                    <span class="dot active" onclick="moveToSlide(0)"></span>
+                    <span class="dot" onclick="moveToSlide(1)"></span>
+                    <span class="dot" onclick="moveToSlide(2)"></span>
+                </div>
+            
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        let currentIndex = 0;
+                        const slides = document.querySelectorAll('.carousel-slide');
+                        const dots = document.querySelectorAll('.dot');
+            
+                        function updateCarousel() {
+                            slides.forEach((slide, index) => {
+                                slide.classList.remove('active');
+                                dots[index].classList.remove('active');
+                            });
+                            slides[currentIndex].classList.add('active');
+                            dots[currentIndex].classList.add('active');
+                        }
+            
+                        function nextSlide() {
+                            currentIndex = (currentIndex + 1) % slides.length;
+                            updateCarousel();
+                        }
+            
+                        function prevSlide() {
+                            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                            updateCarousel();
+                        }
+            
+                        function moveToSlide(index) {
+                            currentIndex = index;
+                            updateCarousel();
+                        }
+            
+                        setInterval(nextSlide, 4000);
+                    });
+                </script>               
+                
             </div>
         </div>
     </section>
@@ -524,54 +665,7 @@
 
 
   
-     <!-- Carousel Section -->
-     <div class="carousel-container">
-        <div class="carousel">
-            <img src="security.jpg" alt="Image 1">
-            <img src="special security.jpg" alt="Image 2">
-            <img src="VIP SECURITY UNIT.jpg" alt="Image 3">
-            <img src="images_uniview-better-security.webp" alt="Image 3">
-        </div>
-        <button class="prev" onclick="prevSlide()">&#10094;</button>
-        <button class="next" onclick="nextSlide()">&#10095;</button>
-    </div>
-    
-    <div class="dots">
-        <span class="dot" onclick="moveToSlide(0)"></span>
-        <span class="dot" onclick="moveToSlide(1)"></span>
-        <span class="dot" onclick="moveToSlide(2)"></span>
-    </div>
-    
-    <script>
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel img');
-        const totalSlides = slides.length;
-        const dots = document.querySelectorAll('.dot');
-    
-        function updateCarousel() {
-            document.querySelector('.carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
-        }
-    
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateCarousel();
-        }
-    
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
-    
-        function moveToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-    
-        updateCarousel();
-        setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
-    </script>
+     
 
     <!-- Services Section -->
     <section id="services" class="services">
@@ -603,7 +697,39 @@
                     <img src="lady_guard-removebg-preview.png" alt="Image 5">
                     <p>We also offer lady guards.</p>
                 </div>
+                <div class="service-item">
+                    <h3>Gate barrier installation</h3>
+                    <img src="gate barrier.jpeg" alt="Image 5">
+                    <p>We also offer gate barrier service for both installation and maintenance .</p>
+                </div>
                 
+            </div>
+
+            <div class="container2">
+                <p> "Secure what matters most! Call us today for expert security services, CCTV installations and access control solutions".
+                    <h1>Your Protection is our Priority.</h1> 
+                </p>
+                <style>
+                    .container2 {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      /* Horizontally center */
+                      justify-content: center;
+                      /* Vertically center */
+                      text-align: center;
+                      /* Center align text */
+                      padding: 20px;
+                      margin: 0 auto;
+                      background-color: #f9f9f9;
+                      /* Optional background color for better visibility */
+                      border-radius: 8px;
+                      /* Optional styling */
+                      max-width: 400px;
+                      /* Limit the width for better design */
+                    }
+                    </style>
+            
             </div>
         </div>
     </section>
@@ -654,20 +780,69 @@
             }
         }
     </style>
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <style>
+           h2{
+            text-align: center;
+           }
+        </style>
+        <h2>Together we strong.</h2>
+        <div class="carousel">
+            
+            <img src="security.jpg" alt="Image 1">
+            <img src="special security.jpg" alt="Image 2">
+            <img src="VIP SECURITY UNIT.jpg" alt="Image 3">
+            
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
     
-
+    <div class="dots">
+        <span class="dot" onclick="moveToSlide(0)"></span>
+        <span class="dot" onclick="moveToSlide(1)"></span>
+        <span class="dot" onclick="moveToSlide(2)"></span>
+        
+    </div>
     
-
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const totalSlides = slides.length;
+        const dots = document.querySelectorAll('.dot');
     
-
+        function updateCarousel() {
+            document.querySelector('.carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
     
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+    
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+    
+        function moveToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+    
+        updateCarousel();
+        setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
+    </script>
     
 
     <!-- About Us Section -->
     <section id="about" class="about">
         <div class="container">
             <h2>About Us</h2>
-            <p>VinSec is a leading security company dedicated to providing innovative and reliable security solutions. With years of experience, we ensure the safety and peace of mind for our clients.</p>
+            <p>VinSec is a leading security company in Kenya dedicated to providing innovative and reliable security solutions. With years of experience, we ensure the safety and peace of mind for our clients.</p>
         </div>
     </section>
 
@@ -680,7 +855,7 @@
                     <p>For any quotation and any more information kindly reach </p>
                     <a href="tel:+254 713900367">+254 713900367</a>                    
                     <a href="mailto:info@astg.co.za">vinsecservices@gmail.com</a>
-                    <p>Or you can reach us on our 24/7 by<a aria-label="Chat on WhatsApp" href="https://wa.me/+254713900367"> <img alt="Chat on WhatsApp" src="WhatsAppButtonGreenLarge.svg" />
+                    <p>Or you can reach us 25/7 on <a aria-label="Chat on WhatsApp" href="https://wa.me/+254713900367"> <img alt="Chat on WhatsApp" src="whatsapp icon.svg" />
                     </a> </p>
                     
                 </div>
